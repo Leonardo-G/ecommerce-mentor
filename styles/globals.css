@@ -1,6 +1,8 @@
 *, *::after, *::before {
   margin: 0;
   box-sizing: inherit;
+  font-family: "Kumbh Sans", sans-serif;
+  font-size: 16px;
 }
 
 html{

@@ -1,7 +1,9 @@
+import LayoutPage from "../components/layout/LayoutPage";
+
 export default function Home() {
     return (
-        <div>
+        <LayoutPage>
             
-        </div>
+        </LayoutPage>
     )
 }
