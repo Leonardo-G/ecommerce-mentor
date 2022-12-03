@@ -5,20 +5,23 @@ import { ImgGallery } from './ImgGallery';
 const ContainerGallery = styled.div`
     margin-top: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: ${ ({ center }: { center?: boolean }) => center ? "center" : "space-between" };
+    column-gap: ${ ({ center }: { center?: boolean }) => center ? "30px" : "" };
 `
 
 interface Props {
     gallery: string[];
     setImage: React.Dispatch<React.SetStateAction<string>>;
     image: string;
+    center?: boolean;
 }
 
-export const Gallery: FC<Props> = ({ gallery, setImage, image }) => {
+
+export const Gallery: FC<Props> = ({ gallery, setImage, image, center = false }) => {
 
 
     return (
-        <ContainerGallery>
+        <ContainerGallery center={ center }>
             {
                 gallery.map(( g, idx) => (
                     <ImgGallery 

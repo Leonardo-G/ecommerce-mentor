@@ -16,32 +16,44 @@ const ImageContainer = styled.div`
     border-radius: 10px;
     overflow:hidden;
     border: ${({ hover }: { hover: boolean }) => hover ? "2px solid hsl(26, 100%, 55%)" :  "2px solid transparent"};
-    
     &:hover{
-        border: 2px solid hsl(26, 100%, 55%);
+        
+    }
+    .white{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        &:hover {
+            background: #ffffff60;
+        }
     }
 
     img{
         object-fit: cover;
-        &:hover{
-            filter: opacity(35%);
-        }
     }
 `
 
 export const ImgGallery: FC<Props> = ({ src, setImages, image }) => {
+    
     return (
         <ImageContainer
             onClick={ () => setImages( src ) }
             hover={ src === image }
         >
+            <div 
+                className='white'
+                style={{
+                    background: image === src ? "#ffffffa2" : "" 
+                }}    
+            ></div>
             <Image 
                 src={ src }
                 alt="Image"
                 fill
-                style={{
-                    filter: image === src ? "opacity(35%)" : "opacity(100%)" 
-                }}
+                
             />
         </ImageContainer>
     )
