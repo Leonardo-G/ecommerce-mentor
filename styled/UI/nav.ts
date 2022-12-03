@@ -4,6 +4,8 @@ export const Navigation = styled.div`
     display: flex;
     border-bottom: 1px solid hsl(220, 14%, 75%);
     justify-content: space-between;
+
+    align-items:center;
 ` 
 
 export const Logo = styled.a`
@@ -11,8 +13,13 @@ export const Logo = styled.a`
     font-size: 32px;
     color: #000;
     text-decoration: none;
-    margin-top: 28px;
+    margin-bottom: 20px;
     letter-spacing: -1.5px;
+`
+
+export const LeftNav = styled.div`
+    display: flex;
+    align-items: center;
 `
 
 export const NavLinks = styled.div`
@@ -20,6 +27,10 @@ export const NavLinks = styled.div`
     column-gap: 30px;
     margin-left: 50px;
     flex: 2;
+
+    @media (max-width: 920px) {
+        display: none;
+    }
 `
 
 export const LinkStyled = styled.a`
@@ -36,7 +47,7 @@ export const LinkStyled = styled.a`
 
 `
 
-export const LeftNav = styled.div`
+export const RightNav = styled.div`
     display: flex;
     column-gap: 40px;
 `
@@ -58,4 +69,36 @@ export const Profile = styled.div`
             border: 2px solid hsl(26, 100%, 55%);
         }
     }
+`
+
+export const NavBar = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background: #fff;
+    transition: all ease .2s;
+`
+
+export const NavColumn = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    padding-left: 20px; 
+    .enlace{
+        font-size: 16px;
+        color: #000;
+        font-weight: 700;
+        padding: 12.5px 0;
+    }
+`
+
+export const BackgroundShadow = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000a3;
 `
