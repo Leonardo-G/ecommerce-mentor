@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import Image from 'next/image'
 
 import styled from 'styled-components'
@@ -25,17 +25,24 @@ const FlexLeft = styled.div`
 `
 
 export const ProductPage: FC = () => {
+    
+    const [image, setImage] = useState( productDB.images[0] );
+
     return (
         <Section>
             <FlexLeft>
                 <ImageContainer>
                     <Image
-                        src={ productDB.images[0] }
+                        src={ image }
                         alt="Image"
                         fill
                     />
                 </ImageContainer>
-                <Gallery gallery={ productDB.images }/>
+                <Gallery 
+                    gallery={ productDB.images }
+                    setImage={ setImage }
+                    image={ image }  
+                />
             </FlexLeft>
             <div style={{ flex: 1 }}></div>
         </Section>

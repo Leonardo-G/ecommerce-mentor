@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import styled from 'styled-components'
 import { ImgGallery } from './ImgGallery';
 
@@ -10,15 +10,23 @@ const ContainerGallery = styled.div`
 
 interface Props {
     gallery: string[];
+    setImage: React.Dispatch<React.SetStateAction<string>>;
+    image: string;
 }
 
+export const Gallery: FC<Props> = ({ gallery, setImage, image }) => {
 
-export const Gallery: FC<Props> = ({ gallery }) => {
+
     return (
         <ContainerGallery>
             {
                 gallery.map(( g, idx) => (
-                    <ImgGallery key={ idx } src={ g }/>
+                    <ImgGallery 
+                        key={ idx } 
+                        src={ g }
+                        setImages={ setImage }
+                        image={ image }
+                    />
                 ))
             }
         </ContainerGallery>
