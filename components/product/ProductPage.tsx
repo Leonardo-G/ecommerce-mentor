@@ -28,15 +28,22 @@ const ImageContainer = styled.div`
 export const ProductPage: FC = () => {
     
     const [image, setImage] = useState( productDB.images[0] );
+    const [modalOpen, setModalOpen] = useState( false );
 
     return (
         <Section>
-            <Modal 
-                image={ image }
-                setImage={ setImage }
-            />
+            {
+                modalOpen &&
+                <Modal 
+                    image={ image }
+                    setImage={ setImage }
+                    setModalOpen={ setModalOpen }
+                />
+            }
             <FlexLeft>
-                <ImageContainer>
+                <ImageContainer
+                    onClick={ () => setModalOpen( true ) }
+                >
                     <Image
                         src={ image }
                         alt="Image"

@@ -1,46 +1,88 @@
-import Image from 'next/image'
 import React, { FC } from 'react'
-import styled from 'styled-components'
+import Image from 'next/image'
+
+import { faXmark, faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { productDB } from '../../db/product'
 import { Gallery } from '../gallery/Gallery'
+import { 
+    CloseModal, 
+    ImageContainer, 
+    LeftButton, 
+    ModalLayout, 
+    ModalMedia, 
+    RightButton 
+} from '../../styled/modal/modal'
 
-const ModalLayout = styled.div`
-    position: relative;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000000b2;
-    z-index: 9;
-`
-
-const ModalMedia = styled.div`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate( -50%, -50% );
-`
-const ImageContainer = styled.div`
-    position: relative;
-    height: 650px;
-    width: 650px;
-    img{
-        border-radius: 20px;
-        object-fit: cover;
-        height: 100%;
-    }
-`
 
 interface Props {
     image: string;
     setImage: React.Dispatch<React.SetStateAction<string>>;
+    setModalOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const Modal:FC<Props> = ({ image, setImage }) => {
+export const Modal:FC<Props> = ({ image, setImage, setModalOpen }) => {
+    
+    const changeImage = (type: "next" | "previous") => {
+        let idxImage: number;
+        let nextImage: string;
+        let previousImage: string;
+        
+        productDB.images.forEach(( img, idx ) => {
+            if(img === image){
+                idxImage = idx;
+                return;
+            }
+        })
+
+        if ( type === "next" ){
+            nextImage = productDB.images.filter( (image, idx) => {
+                if ( idxImage + 1 >= productDB.images.length ) return 0 === idx;
+                if ( idx === idxImage + 1 ) return idx;
+            })[0];
+
+            setImage( nextImage );
+            return;
+        }
+
+        previousImage = productDB.images.filter( (image, idx) => {
+            if ( idxImage - 1 <= -1 ) return 3 === idx;
+            if ( idx === idxImage - 1 ) {
+                if ( idx === 0 ) return 1;
+                return idx
+            };
+        })[0];
+        
+        setImage( previousImage );
+
+    } 
+
     return (
         <ModalLayout>
             <ModalMedia>
+                <CloseModal
+                    onClick={ () => setModalOpen(false) }    
+                >
+                    <FontAwesomeIcon className='icon' icon={ faXmark }/>
+                </CloseModal>
+                <RightButton
+                    onClick={ () => changeImage("next") }
+                >
+                    <FontAwesomeIcon 
+                        icon={ faChevronRight }
+                        className="icon"
+                    />
+                </RightButton>
+                <LeftButton
+                    onClick={ () => changeImage("previous")}
+                >
+                    <FontAwesomeIcon 
+                        icon={ faChevronLeft }
+                        className="icon"
+                    />
+                </LeftButton>
+                
                 <ImageContainer>
                     <Image
                         src={ image }
