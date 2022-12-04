@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 
-import { faXmark, faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark, faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
 import { productDB } from '../../db/product'
 import { Gallery } from '../gallery/Gallery'

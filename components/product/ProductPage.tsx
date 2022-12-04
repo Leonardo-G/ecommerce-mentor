@@ -6,14 +6,17 @@ import styled from 'styled-components'
 import { productDB }from "../../db/product";
 import { Gallery } from '../gallery/Gallery';
 import { Modal } from '../modal/Modal';
+import { ProductDetail } from './ProductDetail';
 
 const Section = styled.section`
-    margin: 100px 0;
+    margin: 100px 50px;
     display: flex;
+    align-items: center;
+    column-gap: 150px;
 `
 
 const FlexLeft = styled.div`
-    flex: 0.7;
+    flex: 0.8;
 `
 const ImageContainer = styled.div`
     position: relative;
@@ -23,6 +26,10 @@ const ImageContainer = styled.div`
         object-fit: cover;
         height: 100%;
     }
+`
+
+const FlexRight = styled.div`
+    flex: 1;
 `
 
 export const ProductPage: FC = () => {
@@ -57,7 +64,9 @@ export const ProductPage: FC = () => {
                 />
                 
             </FlexLeft>
-            <div style={{ flex: 1 }}></div>
+            <FlexRight>
+                <ProductDetail />
+            </FlexRight>
         </Section>
     )
 }
