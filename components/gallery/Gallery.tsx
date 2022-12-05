@@ -7,6 +7,10 @@ const ContainerGallery = styled.div`
     display: flex;
     justify-content: ${ ({ center }: { center?: boolean }) => center ? "center" : "space-between" };
     column-gap: ${ ({ center }: { center?: boolean }) => center ? "30px" : "" };
+
+    @media (max-width: 720px){
+        display: none;
+    }
 `
 
 interface Props {

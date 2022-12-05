@@ -9,6 +9,9 @@ export const ModalLayout = styled.div`
     height: 100%;
     background: #000000b2;
     z-index: 9;
+    @media (max-width: 720px){
+        display: none;
+    }
 `
 
 export const ModalMedia = styled.div`

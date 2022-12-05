@@ -5,6 +5,10 @@ import { Nav } from '../UI/Nav';
 const Container = styled.div`
     width: min( 95%, 1440px );
     margin: 0px auto;
+
+    @media (max-width: 720px){
+        width: 100%;
+    }
 `
 
 interface Props {

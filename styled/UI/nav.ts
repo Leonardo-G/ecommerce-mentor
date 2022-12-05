@@ -4,9 +4,12 @@ export const Navigation = styled.div`
     display: flex;
     border-bottom: 1px solid hsl(220, 14%, 75%);
     justify-content: space-between;
-
     align-items:center;
-` 
+    z-index: 999;
+    @media (max-width: 720px){
+        padding: 5px 20px;
+    }
+`
 
 export const Logo = styled.a`
     font-weight: 700;
@@ -15,6 +18,11 @@ export const Logo = styled.a`
     text-decoration: none;
     margin-bottom: 20px;
     letter-spacing: -1.5px;
+
+    @media (max-width: 420px){
+        font-size: 25px;
+        margin-bottom: 15px;
+    }
 `
 
 export const LeftNav = styled.div`
@@ -50,6 +58,9 @@ export const LinkStyled = styled.a`
 export const RightNav = styled.div`
     display: flex;
     column-gap: 40px;
+    @media (max-width: 420px){
+        column-gap: 10px;
+    }
 `
 
 export const Cart = styled.div`
@@ -79,6 +90,7 @@ export const NavBar = styled.div`
     height: 100%;
     background: #fff;
     transition: all ease .2s;
+    z-index: 999;
 `
 
 export const NavColumn = styled.div`
@@ -101,4 +113,5 @@ export const BackgroundShadow = styled.div`
     width: 100%;
     height: 100%;
     background: #000000a3;
+    z-index: 999;
 `

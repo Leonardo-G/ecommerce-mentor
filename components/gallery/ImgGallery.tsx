@@ -34,6 +34,11 @@ const ImageContainer = styled.div`
     img{
         object-fit: cover;
     }
+
+    @media (max-width: 920px){
+        height: 85px;
+        width:  85px;
+    }
 `
 
 export const ImgGallery: FC<Props> = ({ src, setImages, image }) => {

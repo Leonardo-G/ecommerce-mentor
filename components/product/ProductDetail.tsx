@@ -11,6 +11,10 @@ const Brand = styled.p`
     color: hsl(26, 100%, 55%);
     text-transform: uppercase;
     font-weight: 700;
+
+    @media (max-width: 920px) {
+        font-size: 14px;
+    }
 `
 
 const Title = styled.h1`
@@ -18,6 +22,10 @@ const Title = styled.h1`
     font-weight: 700;
     text-transform: capitalize;
     margin-top: 30px;
+
+    @media (max-width: 920px) {
+        font-size: 24px;
+    }
 `
 
 const Description = styled.p`
@@ -27,6 +35,12 @@ const Description = styled.p`
     margin-top: 30px;
     width: 75%;
     word-spacing: 1.5px;
+    @media (max-width: 920px) {
+        font-size: 14px;
+    }
+    @media (max-width: 420px){
+        width: 100%;
+    }
 `
 
 const Price = styled.p`
@@ -36,6 +50,9 @@ const Price = styled.p`
     display: flex;
     align-items: center;
     column-gap: 20px;
+    @media (max-width: 920px) {
+        font-size: 20px;
+    }
 `
 
 const Discount = styled.span`
@@ -43,6 +60,10 @@ const Discount = styled.span`
     color: hsl(26, 100%, 55%);
     padding: 3px 7px;
     border-radius: 6px;
+
+    @media (max-width: 920px) {
+        font-size: 14px;
+    }
 `
 
 const PreviousPrice = styled.p`
@@ -56,6 +77,10 @@ const ProductCart = styled.div`
     display: flex;
     margin-top: 20px;
     align-items: center;
+    
+    @media (max-width: 720px) {
+        flex-direction: column;
+    }
 `
 
 const QuantityContainer = styled.div`
@@ -81,6 +106,10 @@ const Quantity = styled.p`
     color: #000;
     font-weight: 700;
     font-size: 20px;
+    
+    @media (max-width: 920px) {
+        font-size: 16px;
+    }
 `
 
 const ButtonCart = styled.button`
@@ -92,6 +121,15 @@ const ButtonCart = styled.button`
     border-radius: 6px;
     .icon {
         margin-right: 15px;
+    }
+
+    @media (max-width: 1280px ) {
+        width: 100%;
+        padding: 15px 0px;
+    }
+    
+    @media (max-width: 920px) {
+        font-size: 14px;
     }
 `
 

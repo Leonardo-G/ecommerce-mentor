@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const NavBarButton = styled.div`
     cursor: pointer;
     margin-right: 30px;
+    z-index: 999;
     .navbar{
         width: 25px;
         height: 3px;
@@ -47,5 +48,9 @@ export const NavBarButton = styled.div`
     }
     @media (min-width: 920px){
         display: none;
+    }
+
+    @media (max-width: 420px){
+        margin-right: 10px;
     }
 `
