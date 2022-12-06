@@ -64,9 +64,45 @@ export const RightNav = styled.div`
 `
 
 export const Cart = styled.div`
+    position: relative;
     align-self: center;
     margin-bottom: 10px;
     cursor: pointer;
+`
+
+export const CartNaContainer = styled.div`
+    position: relative;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-height: 200px;
+    width: 100%;
+`
+
+export const CartNav = styled.div`
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 300px;
+    min-height: 200px;
+    background: #fff;
+    border-radius: 16px;
+    -webkit-box-shadow: 0px 20px 53px -9px rgba(0,0,0,0.43);
+    -moz-box-shadow: 0px 20px 53px -9px rgba(0,0,0,0.43);
+    box-shadow: 0px 20px 53px -9px rgba(0,0,0,0.43);
+    .title{
+        border-bottom: 1px solid hsl(220, 14%, 75%);
+        font-weight: 700;
+        padding: 20px; 
+    }
+    .empty {
+        padding: 55px;
+        text-align: center;
+        color: hsl(219, 9%, 45%);
+        font-weight: 700;
+    }
 `
 
 export const Profile = styled.div`

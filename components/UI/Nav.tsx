@@ -13,12 +13,15 @@ import {
     LeftNav,
     NavBar,
     NavColumn,
-    BackgroundShadow
+    BackgroundShadow,
+    CartNav,
+    CartNaContainer
 } from '../../styled/UI/nav';
 import Link from 'next/link';
 
 export const Nav = () => {
     const [openNavbar, setOpenNavbar] = useState(false);
+    const [cartHover, setCartHover] = useState(false);
 
     return (
         <Navigation>
@@ -54,13 +57,25 @@ export const Nav = () => {
                 <LinkStyled>Contact</LinkStyled>
             </NavLinks>
             <RightNav>
-                <Cart>
+                <Cart
+                    onMouseOver={ () => setCartHover( true ) }
+                    onMouseLeave={ () => setCartHover( false ) }
+                >
                     <Image 
                         src="/icons/icon-cart.svg"
                         alt='Icono carrito'
                         width={ 25 }
                         height={ 25 }
                     />
+                    {
+                        cartHover &&
+                        <CartNaContainer>
+                            <CartNav>
+                                <p className='title'>Cart</p>
+                                <p className='empty'>Your cart is empty.</p>
+                            </CartNav>
+                        </CartNaContainer>
+                    }
                 </Cart>
                 <Profile>
                     <Image 
