@@ -183,6 +183,7 @@ export const ContainerProductCart = styled.div`
     display: flex;
     align-items: center;
     column-gap: 12px;
+    margin-bottom: 20px;
     .icon{
         color: hsl(220, 14%, 75%);
         cursor: pointer;

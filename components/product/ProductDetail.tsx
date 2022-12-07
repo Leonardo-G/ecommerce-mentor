@@ -20,6 +20,7 @@ import {
     QuantityContainer, 
     Title 
 } from '../../styled/product/productDetail';
+import { Button } from '../buttons/Button';
 
 export const ProductDetail = () => {
 
@@ -66,12 +67,19 @@ export const ProductDetail = () => {
                     <Quantity>{ quantity }</Quantity>
                     <ButtonQuantity onClick={ addQuantity }>+</ButtonQuantity>
                 </QuantityContainer>
-                <ButtonCart
+                <Button 
+                    title='Add to cart'
+                    icon
+                    iconSvg={ faCartShopping }
+                    eventClick={ handleAddProduct }
+
+                />
+                {/* <ButtonCart
                     onClick={ handleAddProduct }
                 >
                     <FontAwesomeIcon className='icon' icon={ faCartShopping }/>
                     Add to cart
-                </ButtonCart>
+                </ButtonCart> */}
             </ProductCart>
         </>
     )

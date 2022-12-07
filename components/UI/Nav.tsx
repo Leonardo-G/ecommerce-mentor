@@ -30,6 +30,7 @@ import {
     DetailProductCart,
     ContainerCartDiv
 } from '../../styled/UI/nav';
+import { Button } from '../buttons/Button';
 
 export const Nav = () => {
 
@@ -120,9 +121,7 @@ export const Nav = () => {
                                                 />
                                                 
                                             </ContainerProductCart>
-                                            <button   
-                                                className='button'
-                                            >Checkout</button>
+                                            <Button title='Checkout'/>
                                         </ContainerCartDiv>
                                 }
                             </CartNav>
