@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { productDB } from '../../db/product';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+
+import { useDispatch, useSelector } from "react-redux";
+import { addProduct } from "../../reducers/cart/cartSlice";
 
 const Brand = styled.p`
     letter-spacing: 2px;
@@ -134,6 +137,28 @@ const ButtonCart = styled.button`
 `
 
 export const ProductDetail = () => {
+
+    const dispatch = useDispatch(); 
+    const [quantity, setQuantity] = useState(0);
+
+    const handleAddProduct = () => {
+        dispatch( addProduct({
+            quantity: quantity,
+            title: productDB.title,
+            img: productDB.images[0],
+            price: productDB.price
+        }) )
+    }
+
+    const addQuantity = () => {
+        setQuantity( quantity + 1 );
+    }
+
+    const removeQuantity = () => {
+        if ( quantity === 0 ) return;
+        setQuantity( quantity - 1 );
+    }
+
     return (
         <>
             <Brand>sneaker company</Brand>
@@ -152,11 +177,13 @@ export const ProductDetail = () => {
             </PreviousPrice>
             <ProductCart>
                 <QuantityContainer>
-                    <ButtonQuantity>-</ButtonQuantity>
-                    <Quantity>0</Quantity>
-                    <ButtonQuantity>+</ButtonQuantity>
+                    <ButtonQuantity onClick={ removeQuantity }>-</ButtonQuantity>
+                    <Quantity>{ quantity }</Quantity>
+                    <ButtonQuantity onClick={ addQuantity }>+</ButtonQuantity>
                 </QuantityContainer>
-                <ButtonCart>
+                <ButtonCart
+                    onClick={ handleAddProduct }
+                >
                     <FontAwesomeIcon className='icon' icon={ faCartShopping }/>
                     Add to cart
                 </ButtonCart>

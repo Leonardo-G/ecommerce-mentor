@@ -67,31 +67,30 @@ export const Cart = styled.div`
     position: relative;
     align-self: center;
     margin-bottom: 10px;
-    cursor: pointer;
 `
 
 export const CartNaContainer = styled.div`
     position: relative;
-    position: absolute;
-    top: 0px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: absolute;    
+    top: 90%;
+    left: -600%;
     min-height: 200px;
-    width: 100%;
+    width: 200px;
+    z-index: 90;
 `
 
 export const CartNav = styled.div`
     position: absolute;
-    top: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    min-width: 300px;
+    top: 10%;
+    left: -30%;
+    min-width: 350px;
     min-height: 200px;
     background: #fff;
     border-radius: 16px;
     -webkit-box-shadow: 0px 20px 53px -9px rgba(0,0,0,0.43);
     -moz-box-shadow: 0px 20px 53px -9px rgba(0,0,0,0.43);
     box-shadow: 0px 20px 53px -9px rgba(0,0,0,0.43);
+    cursor: default;
     .title{
         border-bottom: 1px solid hsl(220, 14%, 75%);
         font-weight: 700;
@@ -150,4 +149,56 @@ export const BackgroundShadow = styled.div`
     height: 100%;
     background: #000000a3;
     z-index: 999;
+`
+
+export const ContainerCartDiv = styled.div`
+    padding: 20px;
+    .button{
+        background-color: hsl(26, 100%, 55%);
+        margin-top: 20px;
+        border: none;
+        width: 100%;
+        font-weight: 700;
+        color: #fff;
+        cursor: pointer;
+        padding: 15px 70px;
+        border-radius: 6px;
+    }
+`
+
+export const ContainerProductCart = styled.div`
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    .icon{
+        color: hsl(220, 14%, 75%);
+        cursor: pointer;
+        &:hover{
+            color: hsl(219, 9%, 45%);
+        }
+    }
+`
+
+export const ImageContainerCart = styled.div`
+    position: relative;
+    width: 55px;
+    height: 55px;
+    border-radius: 8px;
+    overflow:hidden;
+`
+
+export const DetailProductCart = styled.div`
+    
+    .description, .price{
+        color: hsl(219, 9%, 45%);
+        line-height: 1.5;
+    }
+    
+    .total{
+        color: #000;
+        font-weight: 700;
+        margin-left: 8px;
+    }
+
+    
 `

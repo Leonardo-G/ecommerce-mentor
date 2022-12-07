@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+
+import { useDispatch, useSelector } from 'react-redux';
 
 import { NavBarBtn } from './NavBarBtn';
+import { RootState } from '../../store/configureStore';
 import { 
     Cart,
     RightNav,
@@ -15,13 +19,25 @@ import {
     NavColumn,
     BackgroundShadow,
     CartNav,
-    CartNaContainer
+    CartNaContainer,
+    ContainerProductCart,
+    ImageContainerCart,
+    DetailProductCart,
+    ContainerCartDiv
 } from '../../styled/UI/nav';
-import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { clearCart } from "../../reducers/cart/cartSlice";
 
 export const Nav = () => {
     const [openNavbar, setOpenNavbar] = useState(false);
     const [cartHover, setCartHover] = useState(false);
+    const dispatch = useDispatch()
+    const { quantity, img, title, price } = useSelector( (state: RootState) => state.cart )
+
+    const handleClearCart = () => {
+        dispatch( clearCart() )
+    }
 
     return (
         <Navigation>
@@ -72,7 +88,39 @@ export const Nav = () => {
                         <CartNaContainer>
                             <CartNav>
                                 <p className='title'>Cart</p>
-                                <p className='empty'>Your cart is empty.</p>
+                                {
+                                    quantity === 0
+                                    ?
+                                        <p className='empty'>Your cart is empty.</p>
+                                    :
+                                        <ContainerCartDiv>
+                                            <ContainerProductCart>
+                                                <ImageContainerCart>
+                                                    <Image 
+                                                        alt='productCart'
+                                                        src={ img }
+                                                        fill
+                                                    />
+                                                </ImageContainerCart>
+                                                <DetailProductCart>
+                                                    <p className='description'>{ title }</p>
+                                                    <p className='price'>
+                                                        $ { price.toFixed(2) } x { quantity }
+                                                        <span className='total'>$ { (quantity * price).toFixed(2) }</span>    
+                                                    </p>
+                                                </DetailProductCart>
+                                                <FontAwesomeIcon 
+                                                    icon={ faTrash }
+                                                    className="icon"
+                                                />
+                                                
+                                            </ContainerProductCart>
+                                            <button 
+                                                className='button'
+                                                onClick={ handleClearCart }    
+                                            >Checkout</button>
+                                        </ContainerCartDiv>
+                                }
                             </CartNav>
                         </CartNaContainer>
                     }
