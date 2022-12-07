@@ -22,6 +22,7 @@ export const FlexLeft = styled.div`
     @media (max-width: 720px){
         width: 100%;
         flex: 1;
+        position: relative;
     }
 `
 export const ImageContainer = styled.div`
@@ -57,5 +58,63 @@ export const FlexRight = styled.div`
     @media (max-width: 720px){
         margin: 0px;
         padding: 30px 15px;
+    }
+`
+
+export const RightButton = styled.div`
+    position: relative;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+    z-index: 99;
+    background #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    cursor: pointer;
+
+    &:hover{
+        color: hsl(26, 100%, 55%);
+    }
+
+    .icon{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%)
+    }
+
+    @media (min-width: 720px){
+        display: none;
+    }
+`
+
+export const LeftButton = styled.div`
+    position: relative;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+    z-index: 99;
+    background #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    cursor: pointer;
+
+    &:hover{
+        color: hsl(26, 100%, 55%);
+    }
+    
+    .icon{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%)
+    }
+    
+    @media (min-width: 720px){
+        display: none;
     }
 `

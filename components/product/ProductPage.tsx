@@ -10,13 +10,51 @@ import {
     FlexLeft,
     FlexRight,
     Section,
-    ImageContainer
+    ImageContainer,
+    LeftButton,
+    RightButton
 } from '../../styled/product/productPage';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 export const ProductPage: FC = () => {
     
     const [image, setImage] = useState( productDB.images[0] );
     const [modalOpen, setModalOpen] = useState( false );
+
+    const changeImage = (type: "next" | "previous") => {
+        let idxImage: number;
+        let nextImage: string;
+        let previousImage: string;
+        
+        productDB.images.forEach(( img, idx ) => {
+            if(img === image){
+                idxImage = idx;
+                return;
+            }
+        })
+
+        if ( type === "next" ){
+            nextImage = productDB.images.filter( (image, idx) => {
+                if ( idxImage + 1 >= productDB.images.length ) return 0 === idx;
+                if ( idx === idxImage + 1 ) return idx;
+            })[0];
+
+            setImage( nextImage );
+            return;
+        }
+
+        previousImage = productDB.images.filter( (image, idx) => {
+            if ( idxImage - 1 <= -1 ) return 3 === idx;
+            if ( idx === idxImage - 1 ) {
+                if ( idx === 0 ) return 1;
+                return idx
+            };
+        })[0];
+        
+        setImage( previousImage );
+
+    } 
 
     return (
         <Section>
@@ -29,6 +67,12 @@ export const ProductPage: FC = () => {
                 />
             }
             <FlexLeft>
+                <LeftButton onClick={ () => changeImage("previous") }>
+                    <FontAwesomeIcon 
+                        icon={ faChevronLeft }
+                        className="icon"
+                    />
+                </LeftButton>
                 <ImageContainer
                     onClick={ () => setModalOpen( true ) }
                 >
@@ -38,6 +82,12 @@ export const ProductPage: FC = () => {
                         fill
                     />
                 </ImageContainer>
+                <RightButton onClick={ () => changeImage("next") }>
+                    <FontAwesomeIcon 
+                        icon={ faChevronRight }
+                        className="icon"
+                    />
+                </RightButton>
                 <Gallery
                     gallery={ productDB.images }
                     setImage={ setImage }
