@@ -70,16 +70,16 @@ export const Cart = styled.div`
 
 export const CartNaContainer = styled.div`
     position: relative;
-    position: absolute;    
-    top: 55px;
-    right: 130px;
+    position: absolute; 
+    top: 45px;
+    right: 50px;
     min-height: 200px;
     width: 200px;
     z-index: 90;
 
     @media (max-width: 620px){
         position: absolute;
-        top: 50px;
+        top: 40px;
         right: 0px;
         width: 100%;
     }
@@ -88,7 +88,7 @@ export const CartNaContainer = styled.div`
 export const CartNav = styled.div`
     position: absolute;
     top: 10%;
-    left: -30%;
+    left: -55%;
     min-width: 350px;
     min-height: 200px;
     background: #fff;
@@ -188,6 +188,13 @@ export const ContainerProductCart = styled.div`
         cursor: pointer;
         &:hover{
             color: hsl(219, 9%, 45%);
+        }
+    }
+
+    @media (max-width: 620px){
+        .icon{
+            position: absolute;
+            right: 20px;
         }
     }
 `

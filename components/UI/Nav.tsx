@@ -4,8 +4,13 @@ import Link from 'next/link';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
 import { NavBarBtn } from './NavBarBtn';
 import { RootState } from '../../store/configureStore';
+import { clearCart } from "../../reducers/cart/cartSlice";
+
 import { 
     Cart,
     RightNav,
@@ -25,18 +30,16 @@ import {
     DetailProductCart,
     ContainerCartDiv
 } from '../../styled/UI/nav';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { clearCart } from "../../reducers/cart/cartSlice";
 
 export const Nav = () => {
+
+    const dispatch = useDispatch()
     const [openNavbar, setOpenNavbar] = useState(false);
     const [cartHover, setCartHover] = useState(false);
-    const dispatch = useDispatch()
     const { quantity, img, title, price } = useSelector( (state: RootState) => state.cart )
 
     const handleClearCart = () => {
-        dispatch( clearCart() )
+        dispatch( clearCart() );
     }
 
     return (
@@ -76,6 +79,7 @@ export const Nav = () => {
                 <Cart
                     onMouseOver={ () => setCartHover( true ) }
                     onMouseLeave={ () => setCartHover( false ) }
+                    onClick={ () => setCartHover( true ) }
                 >
                     <Image 
                         src="/icons/icon-cart.svg"
@@ -112,12 +116,12 @@ export const Nav = () => {
                                                 <FontAwesomeIcon 
                                                     icon={ faTrash }
                                                     className="icon"
+                                                    onClick={ handleClearCart }  
                                                 />
                                                 
                                             </ContainerProductCart>
-                                            <button 
+                                            <button   
                                                 className='button'
-                                                onClick={ handleClearCart }    
                                             >Checkout</button>
                                         </ContainerCartDiv>
                                 }
