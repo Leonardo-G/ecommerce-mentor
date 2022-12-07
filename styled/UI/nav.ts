@@ -64,7 +64,6 @@ export const RightNav = styled.div`
 `
 
 export const Cart = styled.div`
-    position: relative;
     align-self: center;
     margin-bottom: 10px;
 `
@@ -72,11 +71,18 @@ export const Cart = styled.div`
 export const CartNaContainer = styled.div`
     position: relative;
     position: absolute;    
-    top: 90%;
-    left: -600%;
+    top: 55px;
+    right: 130px;
     min-height: 200px;
     width: 200px;
     z-index: 90;
+
+    @media (max-width: 620px){
+        position: absolute;
+        top: 50px;
+        right: 0px;
+        width: 100%;
+    }
 `
 
 export const CartNav = styled.div`
@@ -101,6 +107,13 @@ export const CartNav = styled.div`
         text-align: center;
         color: hsl(219, 9%, 45%);
         font-weight: 700;
+    }
+
+    @media (max-width: 620px){
+        width: 95%;
+        top: 40px;
+        left: 2.5%;
+        min-width: 95%;
     }
 `
 
