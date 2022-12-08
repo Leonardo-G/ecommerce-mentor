@@ -75,7 +75,7 @@ export const CartNaContainer = styled.div`
     right: 50px;
     min-height: 200px;
     width: 200px;
-    z-index: 90;
+    z-index: 100;
 
     @media (max-width: 620px){
         position: absolute;

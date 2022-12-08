@@ -14,8 +14,8 @@ import {
     LeftButton,
     RightButton
 } from '../../styled/product/productPage';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { ButtonRight } from '../buttons/ButtonRight';
+import { ButtonLeft } from '../buttons/ButtonLeft';
 
 export const ProductPage: FC = () => {
     
@@ -53,7 +53,6 @@ export const ProductPage: FC = () => {
         })[0];
         
         setImage( previousImage );
-
     } 
 
     return (
@@ -67,12 +66,11 @@ export const ProductPage: FC = () => {
                 />
             }
             <FlexLeft>
-                <LeftButton onClick={ () => changeImage("previous") }>
-                    <FontAwesomeIcon 
-                        icon={ faChevronLeft }
-                        className="icon"
-                    />
-                </LeftButton>
+                <ButtonLeft 
+                    responsive 
+                    event={ () => changeImage("previous") }
+                    width={ 35 }    
+                />
                 <ImageContainer
                     onClick={ () => setModalOpen( true ) }
                 >
@@ -82,12 +80,11 @@ export const ProductPage: FC = () => {
                         fill
                     />
                 </ImageContainer>
-                <RightButton onClick={ () => changeImage("next") }>
-                    <FontAwesomeIcon 
-                        icon={ faChevronRight }
-                        className="icon"
-                    />
-                </RightButton>
+                <ButtonRight 
+                    event={ () => changeImage("next") }
+                    responsive
+                    width={ 35 }
+                />
                 <Gallery
                     gallery={ productDB.images }
                     setImage={ setImage }

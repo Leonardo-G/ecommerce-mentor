@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import Image from 'next/image'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmark, faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 import { productDB } from '../../db/product'
 import { Gallery } from '../gallery/Gallery'
@@ -11,9 +11,10 @@ import {
     ImageContainer, 
     LeftButton, 
     ModalLayout, 
-    ModalMedia, 
-    RightButton 
+    ModalMedia
 } from '../../styled/modal/modal'
+import { ButtonRight } from '../buttons/ButtonRight'
+import { ButtonLeft } from '../buttons/ButtonLeft';
 
 
 interface Props {
@@ -66,22 +67,12 @@ export const Modal:FC<Props> = ({ image, setImage, setModalOpen }) => {
                 >
                     <FontAwesomeIcon className='icon' icon={ faXmark }/>
                 </CloseModal>
-                <RightButton
-                    onClick={ () => changeImage("next") }
-                >
-                    <FontAwesomeIcon 
-                        icon={ faChevronRight }
-                        className="icon"
-                    />
-                </RightButton>
-                <LeftButton
-                    onClick={ () => changeImage("previous")}
-                >
-                    <FontAwesomeIcon 
-                        icon={ faChevronLeft }
-                        className="icon"
-                    />
-                </LeftButton>
+                <ButtonRight 
+                    event={ () => changeImage("next") }
+                />
+                <ButtonLeft 
+                    event={ () => changeImage("previous") }
+                />
                 
                 <ImageContainer>
                     <Image

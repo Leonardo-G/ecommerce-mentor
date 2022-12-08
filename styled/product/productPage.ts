@@ -64,8 +64,8 @@ export const FlexRight = styled.div`
 export const RightButton = styled.div`
     position: relative;
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 50%;"
+    transform: translateY(-50%);"
     right: 15px;
     z-index: 99;
     background #fff;

@@ -12,6 +12,7 @@ const ButtonCart = styled.button`
     border: none;
     padding: 15px 70px;
     border-radius: 6px;
+    width: 100%;
     .icon {
         margin-right: 15px;
     }
